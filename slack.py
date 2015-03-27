@@ -1,6 +1,7 @@
 import sys
-import json
+
 import requests
+
 
 URL = "https://hooks.slack.com/services/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"
 USERNAME = "Zabbix"
@@ -47,9 +48,9 @@ if __name__ == "__main__":
     if subject.lower() not in ["problem", "recovery"] or severity not in SEVERITIES.keys():
         send_to_slack(channel, message, UNKNOWN_EMOJI)
 
-    if subject.lower() == "problem":
-        emoji = SEVERITIES[severity]
-    elif subject.lower == "recovery":
+    emoji = SEVERITIES[severity]
+
+    if subject.lower == "recovery":
         emoji = RECOVERY_EMOJI
 
     send_to_slack(channel, message, emoji)
