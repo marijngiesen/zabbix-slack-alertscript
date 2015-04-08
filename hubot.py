@@ -43,13 +43,13 @@ if __name__ == "__main__":
         channel = channel.replace("#", "")
 
     if subject not in ["problem", "recovery"] or severity not in SEVERITY_EMOJI.keys():
-        send_to_slack(channel, "Zabbix reports: %s" % message, UNKNOWN_EMOJI)
+        send_to_slack(channel, "Zabbix reports: *%s*" % message, UNKNOWN_EMOJI)
 
     if severity in ["not classified", "information"]:
-        send_to_slack(channel, "Zabbix reports: %s" % message, SEVERITY_EMOJI[severity])
+        send_to_slack(channel, "Zabbix reports: *%s*" % message, SEVERITY_EMOJI[severity])
 
     if subject == "problem":
-        send_to_slack(channel, "Zabbix reports a problem: %s." % message, SEVERITY_EMOJI[severity])
+        send_to_slack(channel, "Zabbix reports a problem: *%s*." % message, SEVERITY_EMOJI[severity])
 
     if subject == "recovery":
-        send_to_slack(channel, "Zabbix reports that the problem \"%s\" has been solved." % message, RECOVERY_EMOJI)
+        send_to_slack(channel, "Zabbix reports that the problem \"*%s*\" has been solved." % message, RECOVERY_EMOJI)
